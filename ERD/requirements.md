@@ -95,3 +95,17 @@
     - email in the User table.
     - property_id in the Property and Booking tables.
     - booking_id in the Booking and Payment tables.
+
+**Relationship Definition**
+
+User ↔ Property: One user (host) can own many properties → One-to-Many
+
+User ↔ Booking: One user (guest) can make many bookings → One-to-Many
+
+Property ↔ Booking: One property can have many bookings → One-to-Many
+
+Booking ↔ Payment: One booking has one payment → One-to-One
+
+User ↔ Review ↔ Property: A user can leave many reviews on properties → Many-to-One (User), Many-to-One (Property)
+
+User ↔ Message ↔ User: Users can send messages to each other → Many-to-Many (via sender_id and recipient_id)
