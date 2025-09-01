@@ -1,6 +1,6 @@
 AirBNB Database Specification Normalization to 3NF
 
-- User
+- Users
 
   - user_id (PK)
   - first_name
@@ -11,7 +11,7 @@ AirBNB Database Specification Normalization to 3NF
   - role
   - created_at
 
-- Property
+- Propertys
 
   - property_id (PK)
   - host_id (FK)
@@ -22,7 +22,7 @@ AirBNB Database Specification Normalization to 3NF
   - created_at
   - updated_at
 
-- Booking
+- Bookings
 
   - booking_id (PK)
   - property_id (FK)
@@ -33,7 +33,7 @@ AirBNB Database Specification Normalization to 3NF
   - status
   - created_at
 
-- Payment
+- Payments
 
   - payment_id (PK)
   - booking_id (FK)
@@ -41,7 +41,7 @@ AirBNB Database Specification Normalization to 3NF
   - payment_date
   - payment_method
 
-- Review
+- Reviews
 
   - review_id (PK)
   - property_id (FK)
@@ -50,7 +50,7 @@ AirBNB Database Specification Normalization to 3NF
   - comment
   - created_at
 
-- Message
+- Messages
   - message_id (PK)
   - sender_id (FK)
   - recipient_id (FK)
@@ -80,7 +80,7 @@ Normalization is the process of organizing data in a database to reduce redundan
 
 **Entity-by-Entity Analysis**
 
-- User
+- Users
 
   - user_id (PK)
   - first_name
@@ -95,7 +95,7 @@ All attributes depend directly on user_id.
 
 No repeating groups or derived fields. ✅
 
-- Property
+- Propertys
 
   - property_id (PK)
   - host_id (FK)
@@ -110,7 +110,7 @@ host_id is a foreign key to User.
 
 All other attributes depend directly on property_id. ✅ No transitive dependencies.
 
-- Booking
+- Bookings
 
   - booking_id (PK)
   - property_id (FK)
@@ -125,7 +125,7 @@ All attributes depend directly on booking_id.
 
 No derived or calculated fields violating 3NF. ✅
 
-- Payment
+- Payments
 
   - payment_id (PK)
   - booking_id (FK)
@@ -135,7 +135,7 @@ No derived or calculated fields violating 3NF. ✅
 
   All attributes depend directly on payment_id. ✅ No transitive dependencies.
 
-- Review
+- Reviews
 
   - review_id (PK)
   - property_id (FK)
@@ -146,7 +146,7 @@ No derived or calculated fields violating 3NF. ✅
 
 All attributes depend directly on review_id. ✅
 
-- Message
+- Messages
 
   - message_id (PK)
   - sender_id (FK)

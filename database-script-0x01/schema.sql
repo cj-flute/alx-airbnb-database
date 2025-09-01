@@ -4,8 +4,8 @@ CREATE SCHEMA IF NOT EXISTS alx_airbnb_database;
 
 USE alx_airbnb_database;
 
--- User table
-CREATE TABLE IF NOT EXISTS user (
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
     user_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     first_name VARCHAR(200) NOT NULL,
     last_name VARCHAR(200) NOT NULL,
@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS user (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Property table
-CREATE TABLE IF NOT EXISTS property (
+-- Properties table
+CREATE TABLE IF NOT EXISTS properties (
     property_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     host_id INT,
     name VARCHAR(200) NOT NULL,
@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS property (
     price_per_night DECIMAL(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (host_id) REFERENCES user (user_id)
+    FOREIGN KEY (host_id) REFERENCES users (user_id)
 );
 
--- Booking table
-CREATE TABLE IF NOT EXISTS booking (
+-- Bookings table
+CREATE TABLE IF NOT EXISTS bookings (
     booking_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     property_id INT,
     user_id INT,
@@ -44,12 +44,12 @@ CREATE TABLE IF NOT EXISTS booking (
         'completed'
     ) DEFAULT 'pending' NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (property_id) REFERENCES property (property_id),
-    FOREIGN KEY (user_id) REFERENCES user (user_id)
+    FOREIGN KEY (property_id) REFERENCES properties (property_id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
--- payment table
-CREATE TABLE IF NOT EXISTS payment (
+-- payments table
+CREATE TABLE IF NOT EXISTS payments (
     payment_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     booking_id INT,
     amount DECIMAL(10, 2) NOT NULL,
@@ -64,11 +64,11 @@ CREATE TABLE IF NOT EXISTS payment (
         'completed',
         'failed'
     ) DEFAULT 'pending' NOT NULL,
-    FOREIGN KEY (booking_id) REFERENCES booking (booking_id)
+    FOREIGN KEY (booking_id) REFERENCES bookings (booking_id)
 );
 
--- Review table
-CREATE TABLE IF NOT EXISTS review (
+-- Reviews table
+CREATE TABLE IF NOT EXISTS reviews (
     review_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     property_id INT,
     user_id INT,
@@ -78,17 +78,17 @@ CREATE TABLE IF NOT EXISTS review (
     ),
     comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (property_id) REFERENCES property (property_id),
-    FOREIGN KEY (user_id) REFERENCES user (user_id)
+    FOREIGN KEY (property_id) REFERENCES properties (property_id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
--- Message table
-CREATE TABLE IF NOT EXISTS message (
+-- Messages table
+CREATE TABLE IF NOT EXISTS messages (
     message_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     sender_id INT,
     recipient_id INT,
     message_body TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (sender_id) REFERENCES user (user_id),
-    FOREIGN KEY (recipient_id) REFERENCES user (user_id)
+    FOREIGN KEY (sender_id) REFERENCES users (user_id),
+    FOREIGN KEY (recipient_id) REFERENCES users (user_id)
 );

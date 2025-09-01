@@ -1,8 +1,8 @@
 USE alx_airbnb_database;
 
--- User data
+-- Users data
 INSERT INTO
-    user (
+    users (
         first_name,
         last_name,
         email,
@@ -39,9 +39,9 @@ VALUES (
         '2024-01-03 12:00:00'
     );
 
--- Property data
+-- Properties data
 INSERT INTO
-    property (
+    properties (
         host_id,
         name,
         description,
@@ -53,7 +53,7 @@ INSERT INTO
 VALUES (
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'jane.smith@test.com'
             LIMIT 1
@@ -68,7 +68,7 @@ VALUES (
     (
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'john.doe@test.com'
             LIMIT 1
@@ -83,7 +83,7 @@ VALUES (
     (
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'alice.johnson@test.com'
             LIMIT 1
@@ -98,7 +98,7 @@ VALUES (
     (
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'alice.johnson@test.com'
             LIMIT 1
@@ -111,9 +111,9 @@ VALUES (
         '2024-01-08 12:00:00'
     );
 
--- Booking data
+-- Bookings data
 INSERT INTO
-    booking (
+    bookings (
         property_id,
         user_id,
         start_date,
@@ -125,15 +125,17 @@ INSERT INTO
 VALUES (
         (
             SELECT property_id
-            FROM property
+            FROM properties
             WHERE
                 name = 'Cozy Apartment'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'john.doe@test.com'
+            LIMIT 1
         ),
         '2024-02-10',
         '2024-02-15',
@@ -144,15 +146,17 @@ VALUES (
     (
         (
             SELECT property_id
-            FROM property
+            FROM properties
             WHERE
                 name = 'Beach House'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'alice.johnson@test.com'
+            LIMIT 1
         ),
         '2024-03-01',
         '2024-03-05',
@@ -163,15 +167,17 @@ VALUES (
     (
         (
             SELECT property_id
-            FROM property
+            FROM properties
             WHERE
                 name = 'Mountain Cabin'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'jane.smith@test.com'
+            LIMIT 1
         ),
         '2024-04-10',
         '2024-04-12',
@@ -182,15 +188,17 @@ VALUES (
     (
         (
             SELECT property_id
-            FROM property
+            FROM properties
             WHERE
                 name = 'Lake House'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'john.doe@test.com'
+            LIMIT 1
         ),
         '2024-05-20',
         '2024-05-25',
@@ -199,9 +207,9 @@ VALUES (
         '2024-01-13 17:00:00'
     );
 
--- Payment data
+-- Payments data
 INSERT INTO
-    payment (
+    payments (
         booking_id,
         amount,
         payment_date,
@@ -211,17 +219,17 @@ INSERT INTO
 VALUES (
         (
             SELECT booking_id
-            FROM booking
+            FROM bookings
             WHERE
                 property_id = (
                     SELECT property_id
-                    FROM property
+                    FROM properties
                     WHERE
                         name = 'Cozy Apartment'
                 )
                 AND user_id = (
                     SELECT user_id
-                    FROM user
+                    FROM users
                     WHERE
                         email = 'john.doe@test.com'
                 )
@@ -235,17 +243,17 @@ VALUES (
     (
         (
             SELECT booking_id
-            FROM booking
+            FROM bookings
             WHERE
                 property_id = (
                     SELECT property_id
-                    FROM property
+                    FROM properties
                     WHERE
                         name = 'Beach House'
                 )
                 AND user_id = (
                     SELECT user_id
-                    FROM user
+                    FROM users
                     WHERE
                         email = 'alice.johnson@test.com'
                 )
@@ -259,17 +267,17 @@ VALUES (
     (
         (
             SELECT booking_id
-            FROM booking
+            FROM bookings
             WHERE
                 property_id = (
                     SELECT property_id
-                    FROM property
+                    FROM properties
                     WHERE
                         name = 'Mountain Cabin'
                 )
                 AND user_id = (
                     SELECT user_id
-                    FROM user
+                    FROM users
                     WHERE
                         email = 'jane.smith@test.com'
                 )
@@ -283,17 +291,17 @@ VALUES (
     (
         (
             SELECT booking_id
-            FROM booking
+            FROM bookings
             WHERE
                 property_id = (
                     SELECT property_id
-                    FROM property
+                    FROM properties
                     WHERE
                         name = 'Lake House'
                 )
                 AND user_id = (
                     SELECT user_id
-                    FROM user
+                    FROM users
                     WHERE
                         email = 'john.doe@test.com'
                 )
@@ -305,9 +313,9 @@ VALUES (
         'completed'
     );
 
--- Review data
+-- Reviews data
 INSERT INTO
-    review (
+    reviews (
         property_id,
         user_id,
         rating,
@@ -317,15 +325,17 @@ INSERT INTO
 VALUES (
         (
             SELECT property_id
-            FROM property
+            FROM properties
             WHERE
                 name = 'Cozy Apartment'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'john.doe@test.com'
+            LIMIT 1
         ),
         5,
         'Amazing place! Had a great time.',
@@ -334,15 +344,17 @@ VALUES (
     (
         (
             SELECT property_id
-            FROM property
+            FROM properties
             WHERE
                 name = 'Beach House'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'jane.smith@test.com'
+            LIMIT 1
         ),
         4,
         'Beautiful location, but a bit noisy.',
@@ -351,15 +363,17 @@ VALUES (
     (
         (
             SELECT property_id
-            FROM property
+            FROM properties
             WHERE
                 name = 'Mountain Cabin'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'alice.johnson@test.com'
+            LIMIT 1
         ),
         3,
         'Cozy but could use some improvements.',
@@ -368,24 +382,26 @@ VALUES (
     (
         (
             SELECT property_id
-            FROM property
+            FROM properties
             WHERE
                 name = 'Lake House'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'john.doe@test.com'
+            LIMIT 1
         ),
         5,
         'Perfect getaway spot!',
         '2024-05-30 13:00:00'
     );
 
--- Message data
+-- Messages data
 INSERT INTO
-    message (
+    messages (
         sender_id,
         recipient_id,
         message_body,
@@ -394,15 +410,17 @@ INSERT INTO
 VALUES (
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'john.doe@test.com'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'alice.johnson@test.com'
+            LIMIT 1
         ),
         'Hi Alice, I am interested in your Beach House. Is it available for my dates?',
         '2024-01-20 09:00:00'
@@ -410,15 +428,17 @@ VALUES (
     (
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'alice.johnson@test.com'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'jane.smith@test.com'
+            LIMIT 1
         ),
         'Hello Jane, I saw your Mountain Cabin listing. Can you provide more details?',
         '2024-01-21 10:00:00'
@@ -426,15 +446,17 @@ VALUES (
     (
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'jane.smith@test.com'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'john.doe@test.com'
+            LIMIT 1
         ),
         'Hi John, the Cozy Apartment is available for your requested dates.',
         '2024-01-22 11:00:00'
@@ -442,15 +464,17 @@ VALUES (
     (
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'jane.smith@test.com'
+            LIMIT 1
         ),
         (
             SELECT user_id
-            FROM user
+            FROM users
             WHERE
                 email = 'john.doe@test.com'
+            LIMIT 1
         ),
         'Also, feel free to ask if you have any questions about the property.',
         '2024-01-22 11:05:00'
