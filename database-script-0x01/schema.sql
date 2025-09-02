@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS properties (
     property_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     host_id INT,
-    name VARCHAR(200) NOT NULL,
-    description TEXT NOT NULL,
-    location VARCHAR(255) NOT NULL,
+    property_name VARCHAR(200) NOT NULL,
+    property_description TEXT NOT NULL,
+    property_location VARCHAR(255) NOT NULL,
     price_per_night DECIMAL(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

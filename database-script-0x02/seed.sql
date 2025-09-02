@@ -61,9 +61,9 @@ VALUES (
 INSERT INTO
     properties (
         host_id,
-        name,
-        description,
-        location,
+        property_name,
+        property_description,
+        property_location,
         price_per_night,
         created_at,
         update_at
@@ -145,7 +145,7 @@ VALUES (
             SELECT property_id
             FROM properties
             WHERE
-                name = 'Cozy Apartment'
+                property_name = 'Cozy Apartment'
             LIMIT 1
         ),
         (
@@ -166,7 +166,7 @@ VALUES (
             SELECT property_id
             FROM properties
             WHERE
-                name = 'Beach House'
+                property_name = 'Beach House'
             LIMIT 1
         ),
         (
@@ -187,7 +187,7 @@ VALUES (
             SELECT property_id
             FROM properties
             WHERE
-                name = 'Mountain Cabin'
+                property_name = 'Mountain Cabin'
             LIMIT 1
         ),
         (
@@ -208,7 +208,7 @@ VALUES (
             SELECT property_id
             FROM properties
             WHERE
-                name = 'Lake House'
+                property_name = 'Lake House'
             LIMIT 1
         ),
         (
@@ -243,7 +243,7 @@ VALUES (
                     SELECT property_id
                     FROM properties
                     WHERE
-                        name = 'Cozy Apartment'
+                        property_name = 'Cozy Apartment'
                     LIMIT 1
                 )
                 AND user_id = (
@@ -269,7 +269,7 @@ VALUES (
                     SELECT property_id
                     FROM properties
                     WHERE
-                        name = 'Beach House'
+                        property_name = 'Beach House'
                     LIMIT 1
                 )
                 AND user_id = (
@@ -295,7 +295,7 @@ VALUES (
                     SELECT property_id
                     FROM properties
                     WHERE
-                        name = 'Mountain Cabin'
+                        property_name = 'Mountain Cabin'
                     LIMIT 1
                 )
                 AND user_id = (
@@ -321,7 +321,7 @@ VALUES (
                     SELECT property_id
                     FROM properties
                     WHERE
-                        name = 'Lake House'
+                        property_name = 'Lake House'
                     LIMIT 1
                 )
                 AND user_id = (
@@ -353,7 +353,7 @@ VALUES (
             SELECT property_id
             FROM properties
             WHERE
-                name = 'Cozy Apartment'
+                property_name = 'Cozy Apartment'
             LIMIT 1
         ),
         (
@@ -372,7 +372,7 @@ VALUES (
             SELECT property_id
             FROM properties
             WHERE
-                name = 'Beach House'
+                property_name = 'Beach House'
             LIMIT 1
         ),
         (
@@ -391,7 +391,7 @@ VALUES (
             SELECT property_id
             FROM properties
             WHERE
-                name = 'Mountain Cabin'
+                property_name = 'Mountain Cabin'
             LIMIT 1
         ),
         (
@@ -410,7 +410,7 @@ VALUES (
             SELECT property_id
             FROM properties
             WHERE
-                name = 'Lake House'
+                property_name = 'Lake House'
             LIMIT 1
         ),
         (
