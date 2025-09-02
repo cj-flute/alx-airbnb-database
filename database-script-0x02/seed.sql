@@ -37,6 +37,24 @@ VALUES (
         '5555555555',
         'admin',
         '2024-01-03 12:00:00'
+    ),
+    (
+        'Bob',
+        'Brown',
+        'bob.brown@test.com',
+        'hashed_password_4',
+        NULL,
+        'guest',
+        '2024-01-04 13:00:00'
+    ),
+    (
+        'Charlie',
+        'Davis',
+        'charlie.davis@test.com',
+        'hashed_password_5',
+        '4444444444',
+        'host',
+        '2024-01-05 14:00:00'
     );
 
 -- Properties data
@@ -226,12 +244,14 @@ VALUES (
                     FROM properties
                     WHERE
                         name = 'Cozy Apartment'
+                    LIMIT 1
                 )
                 AND user_id = (
                     SELECT user_id
                     FROM users
                     WHERE
                         email = 'john.doe@test.com'
+                    LIMIT 1
                 )
             LIMIT 1
         ),
@@ -250,12 +270,14 @@ VALUES (
                     FROM properties
                     WHERE
                         name = 'Beach House'
+                    LIMIT 1
                 )
                 AND user_id = (
                     SELECT user_id
                     FROM users
                     WHERE
                         email = 'alice.johnson@test.com'
+                    LIMIT 1
                 )
             LIMIT 1
         ),
@@ -274,12 +296,14 @@ VALUES (
                     FROM properties
                     WHERE
                         name = 'Mountain Cabin'
+                    LIMIT 1
                 )
                 AND user_id = (
                     SELECT user_id
                     FROM users
                     WHERE
                         email = 'jane.smith@test.com'
+                    LIMIT 1
                 )
             LIMIT 1
         ),
@@ -298,12 +322,14 @@ VALUES (
                     FROM properties
                     WHERE
                         name = 'Lake House'
+                    LIMIT 1
                 )
                 AND user_id = (
                     SELECT user_id
                     FROM users
                     WHERE
                         email = 'john.doe@test.com'
+                    LIMIT 1
                 )
             LIMIT 1
         ),
