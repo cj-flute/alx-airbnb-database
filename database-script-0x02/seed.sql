@@ -55,6 +55,51 @@ VALUES (
         '4444444444',
         'host',
         '2024-01-05 14:00:00'
+    ),
+    (
+        'Eve',
+        'Wilson',
+        'eve.wilson@test.com',
+        'hashed_password_6',
+        '3333333333',
+        'guest',
+        '2024-01-06 15:00:00'
+    ),
+    (
+        'Frank',
+        'Miller',
+        'frank.miller@test.com',
+        'hashed_password_7',
+        NULL,
+        'host',
+        '2024-01-07 16:00:00'
+    ),
+    (
+        'Grace',
+        'Taylor',
+        'grace.taylor@test.com',
+        'hashed_password_8',
+        '2222222222',
+        'admin',
+        '2024-01-08 17:00:00'
+    ),
+    (
+        'Hank',
+        'Anderson',
+        'hank.anderson@test.com',
+        'hashed_password_9',
+        '1111111111',
+        'guest',
+        '2024-01-09 18:00:00'
+    ),
+    (
+        'Ivy',
+        'Thomas',
+        'ivy.thomas@test.com',
+        'hashed_password_10',
+        NULL,
+        'host',
+        '2024-01-10 19:00:00'
     );
 
 -- Properties data
@@ -127,6 +172,96 @@ VALUES (
         200.00,
         '2024-01-08 12:00:00',
         '2024-01-08 12:00:00'
+    ),
+    (
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'ivy.thomas@test.com'
+            LIMIT 1
+        ),
+        'City Loft',
+        'A modern loft in the heart of the city.',
+        'San Francisco',
+        220.00,
+        '2024-01-09 13:00:00',
+        '2024-01-09 13:00:00'
+    ),
+    (
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'hank.anderson@test.com'
+            LIMIT 1
+        ),
+        'Country Cottage',
+        'A charming cottage in the countryside.',
+        'Nashville',
+        150.00,
+        '2024-01-10 14:00:00',
+        '2024-01-10 14:00:00'
+    ),
+    (
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'frank.miller@test.com'
+            LIMIT 1
+        ),
+        'Desert Villa',
+        'A luxurious villa in the desert.',
+        'Phoenix',
+        300.00,
+        '2024-01-11 15:00:00',
+        '2024-01-11 15:00:00'
+    ),
+    (
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'charlie.davis@test.com'
+            LIMIT 1
+        ),
+        'Forest Retreat',
+        'A secluded retreat in the forest.',
+        'Portland',
+        170.00,
+        '2024-01-12 16:00:00',
+        '2024-01-12 16:00:00'
+    ),
+    (
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'eve.wilson@test.com'
+            LIMIT 1
+        ),
+        'Island Bungalow',
+        'A tropical bungalow on a private island.',
+        'Miami',
+        280.00,
+        '2024-01-13 17:00:00',
+        '2024-01-13 17:00:00'
+    ),
+    (
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'grace.taylor@test.com'
+            LIMIT 1
+        ),
+        'Ski Chalet',
+        'A cozy chalet near the ski slopes.',
+        'Aspen',
+        350.00,
+        '2024-01-14 18:00:00',
+        '2024-01-14 18:00:00'
     );
 
 -- Bookings data
@@ -223,6 +358,132 @@ VALUES (
         1000.00,
         'completed',
         '2024-01-13 17:00:00'
+    ),
+    (
+        (
+            SELECT property_id
+            FROM properties
+            WHERE
+                property_name = 'City Loft'
+            LIMIT 1
+        ),
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'charlie.davis@test.com'
+            LIMIT 1
+        ),
+        '2024-06-15',
+        '2024-06-20',
+        1100.00,
+        'confirmed',
+        '2024-01-14 18:00:00'
+    ),
+    (
+        (
+            SELECT property_id
+            FROM properties
+            WHERE
+                property_name = 'Country Cottage'
+            LIMIT 1
+        ),
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'hank.anderson@test.com'
+            LIMIT 1
+        ),
+        '2024-07-01',
+        '2024-07-05',
+        600.00,
+        'pending',
+        '2024-01-15 19:00:00'
+    ),
+    (
+        (
+            SELECT property_id
+            FROM properties
+            WHERE
+                property_name = 'Desert Villa'
+            LIMIT 1
+        ),
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'frank.miller@test.com'
+            LIMIT 1
+        ),
+        '2024-08-10',
+        '2024-08-15',
+        1500.00,
+        'confirmed',
+        '2024-01-16 20:00:00'
+    ),
+    (
+        (
+            SELECT property_id
+            FROM properties
+            WHERE
+                property_name = 'Forest Retreat'
+            LIMIT 1
+        ),
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'eve.wilson@test.com'
+            LIMIT 1
+        ),
+        '2024-09-05',
+        '2024-09-10',
+        850.00,
+        'canceled',
+        '2024-01-17 21:00:00'
+    ),
+    (
+        (
+            SELECT property_id
+            FROM properties
+            WHERE
+                property_name = 'Island Bungalow'
+            LIMIT 1
+        ),
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'grace.taylor@test.com'
+            LIMIT 1
+        ),
+        '2024-10-15',
+        '2024-10-20',
+        1400.00,
+        'confirmed',
+        '2024-01-18 22:00:00'
+    ),
+    (
+        (
+            SELECT property_id
+            FROM properties
+            WHERE
+                property_name = 'Ski Chalet'
+            LIMIT 1
+        ),
+        (
+            SELECT user_id
+            FROM users
+            WHERE
+                email = 'ivy.thomas@test.com'
+            LIMIT 1
+        ),
+        '2024-11-20',
+        '2024-11-25',
+        1750.00,
+        'pending',
+        '2024-01-19 23:00:00'
     );
 
 -- Payments data
