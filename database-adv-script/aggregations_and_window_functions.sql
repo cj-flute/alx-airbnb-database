@@ -15,7 +15,14 @@ SELECT COUNT(*) FROM bookings GROUP BY user_id;
 
 -- A more complex query combining JOINs, aggregations, and window functions to list properties along with their total bookings and rank them.
 
-SELECT properties.property_id, properties.property_name, bookings.total_bookings, RANK() OVER (
+SELECT
+    properties.property_id,
+    properties.property_name,
+    bookings.total_bookings,
+    ROW_NUMBER() OVER (
+        ORDER BY bookings.total_bookings DESC
+    ) AS row_numbers,
+    RANK() OVER (
         ORDER BY bookings.total_bookings DESC
     ) AS booking_rank
 FROM properties
