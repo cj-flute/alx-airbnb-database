@@ -3,9 +3,15 @@ use alx_airbnb_database;
 -- Annalyze the query plan before creating indexes
 EXPLAIN SELECT * FROM users;
 
+ANALYZE TABLE users;
+
 EXPLAIN SELECT * FROM properties;
 
+ANALYZE TABLE properties;
+
 EXPLAIN SELECT * FROM bookings;
+
+ANALYZE TABLE bookings;
 
 -- Indexing for users table
 CREATE INDEX users_index ON users (
@@ -34,10 +40,15 @@ CREATE INDEX bookings_index ON bookings (
 -- Annalyze the query plan after creating indexes
 EXPLAIN SELECT * FROM users;
 
+ANALYZE TABLE users;
+
 EXPLAIN SELECT * FROM properties;
+
+ANALYZE TABLE properties;
 
 EXPLAIN SELECT * FROM bookings;
 
+ANALYZE TABLE bookings;
 -- Dropping Indexes
 -- ALTER TABLE users DROP INDEX users_index;
 
