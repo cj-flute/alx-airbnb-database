@@ -6,14 +6,14 @@ id = 1
 select_type = SIMPLE
 table = bookings
 partitions
-type = ALL
-possible_keys = property_id
-key
-key_len
+type = range
+possible_keys = PRIMARY,property_id,bookings_index
+key = PRIMARY
+key_len = 4
 ref
-rows = 10
-filtered = 100.00
-Extra Using = where
+rows = 5
+filtered = 50.00
+Extra = Using where
 
 **Payments Table**
 id = 1

@@ -5,7 +5,10 @@ SELECT bookings.*, properties.*, payments.*
 FROM
     bookings
     INNER JOIN properties ON bookings.property_id = properties.property_id
-    LEFT JOIN payments ON bookings.booking_id = payments.booking_id;
+    LEFT JOIN payments ON bookings.booking_id = payments.booking_id
+WHERE
+    bookings.booking_id < 6
+    AND bookings.property_id < 6;
 
 -- A query to analyze the performance of the above query using EXPLAIN.
 EXPLAIN
@@ -13,7 +16,10 @@ SELECT bookings.*, properties.*, payments.*
 FROM
     bookings
     INNER JOIN properties ON bookings.property_id = properties.property_id
-    LEFT JOIN payments ON bookings.booking_id = payments.booking_id;
+    LEFT JOIN payments ON bookings.booking_id = payments.booking_id
+WHERE
+    bookings.booking_id < 6
+    AND bookings.property_id < 6;
 
 -- Adding indexes to improve performance
 CREATE INDEX idx_bookings ON bookings (
