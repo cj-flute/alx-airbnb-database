@@ -26,6 +26,5 @@ ORDER BY properties.property_id;
 -- ORDER BY booking_id;
 
 SELECT bookings.*, users.*
-FROM users FULL
-    JOIN bookings ON users.user_id = bookings.user_id
+FROM users FULL OUTER JOIN bookings ON users.user_id = bookings.user_id
 ORDER BY users.user_id, bookings.booking_id;
